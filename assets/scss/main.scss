@@ -1,0 +1,53 @@
+@font-face {
+	font-family: 'OpenSans';
+	font-style: normal;
+	font-weight: 400;
+	src: local('OpenSans'), local('OpenSans-Regular'),
+		url(../fonts/OpenSans/OpenSans-Regular.ttf) format('truetype');
+}
+
+@font-face {
+	font-family: 'OpenSans';
+	font-style: normal;
+	font-weight: 600;
+	src: local('OpenSans'), local('OpenSans-SemiBold'),
+		url(../fonts/OpenSans/OpenSans-SemiBold.ttf) format('truetype');
+}
+
+@font-face {
+	font-family: 'OpenSans';
+	font-style: normal;
+	font-weight: 700;
+	src: local('OpenSans'), local('OpenSans-Bold'),
+		url(../fonts/OpenSans/OpenSans-Bold.ttf) format('truetype');
+}
+
+@font-face {
+	font-family: 'Athiti';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Athiti'), local('Athiti-Regular'),
+		url(../fonts/Athiti/Athiti-Regular.ttf) format('truetype');
+}
+
+@font-face {
+	font-family: 'Athiti';
+	font-style: normal;
+	font-weight: 700;
+	src: local('Athiti'), local('Athiti-Bold'),
+		url(../fonts/Athiti/Athiti-Bold.ttf) format('truetype');
+}
+
+html {
+	box-sizing: border-box;
+}
+
+body {
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+	margin: 0;
+}

@@ -1,21 +1,44 @@
 <template>
-  <section class="container">
+  <div>
     <navbar/>
-    <div class="columns">
-      <div class="column is-2">
-        <card/>
+    <div class="container">
+      <div class="tabs is-fullwidth">
+        <ul>
+          <li class="is-active">
+            <a>Want to
+              <strong>&nbsp;Buy&nbsp;</strong>a new game</a>
+          </li>
+          <li>
+            <a>Want to
+              <strong>&nbsp;Sell&nbsp;</strong>your game</a>
+          </li>
+        </ul>
       </div>
-      <div class="column is-2">
-        <card/>
-      </div>
-      <div class="column is-2">
-        <card/>
-      </div>
-      <div class="column is-2">
-        <card/>
+      <div class="columns is-multiline">
+        <div class="column is-2">
+          <card/>
+        </div>
+        <div class="column is-2">
+          <card/>
+        </div>
+        <div class="column is-2">
+          <card/>
+        </div>
+        <div class="column is-2">
+          <card/>
+        </div>
+        <div class="column is-2">
+          <card/>
+        </div>
+        <div class="column is-2">
+          <card/>
+        </div>
+        <div class="column is-2">
+          <card/>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>
@@ -30,6 +53,6 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 </style>

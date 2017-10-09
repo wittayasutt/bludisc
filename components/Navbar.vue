@@ -1,19 +1,21 @@
 <template>
-  <nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <a class="navbar-item" href="http://bulma.io">
-        <img src="http://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
-      </a>
-
-      <button class="button navbar-burger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+  <section class="hero is-dark is-medium">
+    <div class="hero-head">
+      <header class="nav">
+        <div class="container"></div>
+      </header>
     </div>
-  </nav>
+
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <h1 class="title">
+          What do you want to play?
+        </h1>
+      </div>
+    </div>
+  </section>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 </style>

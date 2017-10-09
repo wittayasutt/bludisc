@@ -1,35 +1,36 @@
 <template>
   <div class="card">
-    <div class="card-image">
-      <figure class="image is-4by3">
-        <img src="http://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-      </figure>
-    </div>
-    <div class="card-content">
-      <div class="media">
-        <div class="media-left">
-          <figure class="image is-48x48">
-            <img src="http://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-          </figure>
-        </div>
-        <div class="media-content">
-          <p class="title is-4">John Smith</p>
-          <p class="subtitle is-6">@johnsmith</p>
-        </div>
-      </div>
-
-      <div class="content">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-        <a>@bulmaio</a>.
-        <a href="#">#css</a>
-        <a href="#">#responsive</a>
-        <br>
-        <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-      </div>
-    </div>
+    <img src="https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0006-CUSA08760_00-BFIIBETA00000000/1507568555000/image?_version=00_09_000&platform=chihiro&w=225&h=225&bg_color=000000&opacity=100" alt="test" />
+    <div class="name">{{name}} ({{platform}})</div>
+    <div class="price">{{price}} Baht</div>
   </div>
 </template>
 
-<style lang="scss">
+<script>
+export default {
+  data () {
+    return {
+      name: 'STAR WARS™ Battlefront™ II Multiplayer Beta',
+      platform: 'PS4',
+      price: 1200
+    }
+  }
+}
+</script>
 
+<style lang="scss" scoped>
+.card {
+  background-color: inherit;
+  box-shadow: none;
+
+  .name {
+    color: white;
+    font-size: 0.8rem;
+  }
+
+  .price {
+    color: $primary;
+    font-size: 0.9rem;
+  }
+}
 </style>
