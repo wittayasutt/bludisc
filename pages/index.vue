@@ -42,15 +42,15 @@
 </template>
 
 <script>
-import Card from '~/components/Card.vue'
-import Navbar from '~/components/Navbar.vue'
+  import Card from '~/components/Card.vue'
+  import Navbar from '~/components/Navbar.vue'
 
-export default {
-  components: {
-    Card,
-    Navbar
+  export default {
+    components: {
+      Card,
+      Navbar
+    }
   }
-}
 </script>
 
 <style lang="scss" scoped>
