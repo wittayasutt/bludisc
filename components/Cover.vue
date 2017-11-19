@@ -112,6 +112,7 @@
 
   		video {
   			min-width: 130%;
+  		filter: blur(1px);
   		}
   	}
   }
