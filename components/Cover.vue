@@ -10,7 +10,7 @@
         <i class="fa fa-chevron-down "></i>
       </span>
     </div>
-    <video autoplay loop>
+    <video autoplay muted loop>
       <source src="cover.mp4" type='video/mp4'>
     </video>
   </div>
@@ -40,19 +40,17 @@
   		transition: 0.5s;
 
   		&:hover {
-  			// background: rgba(#0000ff, 0.5);
+  			background: rgba(0, 0, 0, 0.5);
   		}
 
   		img {
-  			// position: absolute;
-  			// top: 25%;
   			height: 6rem;
   			margin-bottom: 1.5rem;
-      }
+  		}
 
-      h1 {
-        font-weight: bold;
-      }
+  		h1 {
+  			font-weight: bold;
+  		}
 
   		.search {
   			input {
@@ -73,8 +71,8 @@
   		span {
   			position: absolute;
   			font-size: 2rem;
-  			bottom: 40px;
-  			animation: MoveUpDown 1s linear infinite;
+  			bottom: 30px;
+  			animation: MoveUpDown 1.2s linear infinite;
   		}
   	}
 
@@ -101,18 +99,35 @@
   	.container {
   		height: 80vh;
 
+  		.overlay {
+  			img {
+          height: 3rem;
+          margin-bottom: 1rem;
+  			}
+
+  			h1 {
+  				font-size: 2rem;
+  			}
+  		}
+
   		video {
   			min-width: 130%;
   		}
   	}
   }
 
+  @media screen and (orientation: landscape) and (max-width: 769px) {
+  	.container {
+  		height: 100vh;
+  	}
+  }
+
   @keyframes MoveUpDown {
   	0% {
-  		bottom: 40px;
+  		bottom: 30px;
   		opacity: 1;
   	}
-  	30% {
+  	20% {
   		opacity: 1;
   	}
   	100% {
