@@ -1,6 +1,7 @@
 <template>
   <div class="container is-fluid">
     <div class="overlay">
+      <img src="logo/svg/logo_original.svg" alt="bludisc">
       <h1>WHAT DO YOU WANT TO PLAY?</h1>
       <div class="search">
         <input type="text" placeholder="ex. God of War" autofocus="autofocus">
@@ -39,8 +40,19 @@
   		transition: 0.5s;
 
   		&:hover {
-  			background: rgba(#0000FF, 0.5);
+  			// background: rgba(#0000ff, 0.5);
   		}
+
+  		img {
+  			// position: absolute;
+  			// top: 25%;
+  			height: 6rem;
+  			margin-bottom: 1.5rem;
+      }
+
+      h1 {
+        font-weight: bold;
+      }
 
   		.search {
   			input {

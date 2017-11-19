@@ -1,0 +1,38 @@
+<svg width="924" height="912" viewBox="0 0 924 912" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>logo_black</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="matrix(3 0 0 3 -726 1548)">
+<g id="logo_black">
+<mask id="mask0_alpha" mask-type="alpha">
+<g id="bg">
+<use xlink:href="#path0_fill" transform="translate(242 -516)"/>
+</g>
+</mask>
+<g id="&#224;&#184;&#139;&#224;&#184;&#173;&#224;&#184;&#135;" mask="url(#mask0_alpha)">
+<g id="Subtract">
+<use xlink:href="#path1_fill" transform="translate(242 -516)"/>
+</g>
+</g>
+<g id="cd" mask="url(#mask0_alpha)">
+<mask id="mask1_alpha" mask-type="alpha">
+<g id="Polygon">
+<use xlink:href="#path2_fill" transform="matrix(6.12323e-17 -1 1 6.12323e-17 417 -154)"/>
+</g>
+</mask>
+<g id="Subtract" mask="url(#mask1_alpha)">
+<use xlink:href="#path3_fill" transform="translate(230 -526)"/>
+</g>
+</g>
+<g id="Rectangle 2" mask="url(#mask0_alpha)">
+<use xlink:href="#path4_fill" transform="matrix(0.707107 0.707107 -0.707107 0.707107 393.751 -363.751)" fill="#FFFFFF" fill-opacity="0.1"/>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" d="M 0 0L 308 0L 308 304L 0 304L 0 0Z"/>
+<path id="path1_fill" fill-rule="evenodd" d="M 156.181 148.278C 153.865 150.616 153.865 154.384 156.181 156.722L 302.032 304L 8 304C 3.58173 304 0 300.418 0 296L 0 8C 0 3.58173 3.58173 0 8 0L 303.022 0L 156.181 148.278Z"/>
+<path id="path2_fill" d="M 209.5 0L 390.932 177.75L 28.0677 177.75L 209.5 0Z"/>
+<path id="path3_fill" fill-rule="evenodd" d="M 160 320C 248.366 320 320 248.366 320 160C 320 71.6345 248.366 0 160 0C 71.6344 0 0 71.6345 0 160C 0 248.366 71.6344 320 160 320ZM 177 210C 204.614 210 227 187.614 227 160C 227 132.386 204.614 110 177 110C 149.386 110 127 132.386 127 160C 127 187.614 149.386 210 177 210Z"/>
+<path id="path4_fill" d="M 0.349957 3.0097C 0.352703 1.34906 1.70398 0.00658581 3.3646 0.0146927L 206.375 1.00575C 209.04 1.01877 210.366 4.24213 208.481 6.12703L 5.13332 209.475C 3.24174 211.367 0.00758217 210.024 0.0120065 207.349L 0.349957 3.0097Z"/>
+</defs>
+</svg>

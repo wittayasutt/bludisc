@@ -1,0 +1,30 @@
+<svg width="924" height="960" viewBox="0 0 924 960" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>icon ja</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="matrix(3 0 0 3 1326 1419)">
+<g id="icon ja">
+<g id="Subtract">
+<use xlink:href="#path0_fill" transform="translate(-442 -463)" fill="#162C9B"/>
+</g>
+<g id="Rectangle 2">
+<use xlink:href="#path1_fill" transform="matrix(0.707107 0.707107 -0.707107 0.707107 -290.249 -310.751)" fill="#000000" fill-opacity="0.1"/>
+</g>
+<g id="cd">
+<mask id="mask0_alpha" mask-type="alpha">
+<g id="Polygon">
+<use xlink:href="#path2_fill" transform="matrix(6.12323e-17 -1 1 6.12323e-17 -267 -101)" fill="#FFFFFF"/>
+</g>
+</mask>
+<g id="Subtract" mask="url(#mask0_alpha)">
+<use xlink:href="#path3_fill" transform="translate(-454 -473)" fill="#26A7FF"/>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" fill-rule="evenodd" d="M 303.022 0L 152 152.5L 302.032 304L 0 304L 0 0L 303.022 0Z"/>
+<path id="path1_fill" d="M 0.354934 0L 213.567 1.04087L 0 214.608L 0.354934 0Z"/>
+<path id="path2_fill" d="M 209.5 0L 390.932 177.75L 28.0677 177.75L 209.5 0Z"/>
+<path id="path3_fill" fill-rule="evenodd" d="M 160 320C 248.366 320 320 248.366 320 160C 320 71.6345 248.366 0 160 0C 71.6345 0 0 71.6345 0 160C 0 248.366 71.6345 320 160 320ZM 177 210C 204.614 210 227 187.614 227 160C 227 132.386 204.614 110 177 110C 149.386 110 127 132.386 127 160C 127 187.614 149.386 210 177 210Z"/>
+</defs>
+</svg>
