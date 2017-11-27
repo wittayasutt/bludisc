@@ -10,7 +10,7 @@
     <div class="hero-body">
       <div class="container">
         <h2 class="subtitle">
-          เพราะเราอยากให้คุณเล่นเกมที่ดีในราคาที่คุ้มค่า
+          <strong>" เพราะเราอยากให้คุณเล่นเกมที่ดีในราคาที่คุ้มค่า "</strong>
         </h2>
         <h2 class="subtitle">
           คุณต้องการ?
@@ -126,6 +126,12 @@
   				margin-bottom: auto;
   			}
   		}
+  	}
+  }
+
+  @media screen and (orientation: landscape) and (max-width: 769px) {
+  	.hero {
+  		height: auto;
   	}
   }
 </style>
