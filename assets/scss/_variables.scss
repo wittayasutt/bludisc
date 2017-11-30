@@ -3,10 +3,14 @@
 $fullhd: 1152px + (2 * $gap);
 $family-primary: 'OpenSans', 'Athiti';
 
-$primary: #4171d6;
-$info: $blue;
+$primary: #162c9b;
+$secondary: #14288b;
+$accent: #26a7ff;
+$dark: #181818;
+$light: #eaeaea;
+$grey: #6b6d78;
+
+$info: $accent;
 $success: $green;
 $warning: $yellow;
 $danger: $red;
-$dark: #181818;
-$text: $grey-dark;

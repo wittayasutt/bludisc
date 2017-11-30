@@ -1,8 +1,8 @@
 <template>
-  <div class="card" @mouseover="select">
-    <img :src="cover" :alt="name" />
-    <div class="name">{{name}} ({{platform}})</div>
-    <div class="price">{{price}} Baht</div>
+  <div class="card" @click="addItem(post)">
+    <img :src="post.cover.medium" :alt="post.title" />
+    <div class="name">{{post.title}} ({{post.platform}})</div>
+    <div class="price">{{post.price}} Baht</div>
 
     <div class="overlay">
       <div class="preview">
@@ -11,8 +11,8 @@
         </span>
       </div>
       <div class="text">
-        <div class="name">{{name}} ({{platform}})</div>
-        <div class="price">{{price}} Baht</div>
+        <div class="name">{{post.title}} ({{post.platform}})</div>
+        <div class="price">{{post.price}} Baht</div>
         <a class="button is-primary is-outlined is-small btn-more">more details</a>
       </div>
     </div>
@@ -20,19 +20,21 @@
 </template>
 
 <script>
+  import { mapActions } from 'vuex'
+
   export default {
   	data() {
-  		return {
-  			name: 'STAR WARS™ Battlefront™ II Multiplayer Beta',
-  			cover:
-  				'https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP9000-CUSA07408_00-00000000GODOFWAR/1507326809000/image?_version=00_09_000&platform=chihiro&w=225&h=225&bg_color=000000&opacity=100',
-  			platform: 'PS4',
-  			price: 1200
-  		}
+  		return {}
   	},
+  	props: ['post'],
   	methods: {
-  		select() {
-  			console.log('select')
+  		...mapActions({
+  			addToCart: 'addToCart',
+  			selectID: 'selectID'
+  		}),
+  		addItem(post) {
+  			this.addToCart(post)
+  			this.selectID(post.id)
   		}
   	}
   }
@@ -108,6 +110,12 @@
   					width: 85%;
   					transition: 0.1s ease;
   				}
+  			}
+  		}
+
+  		&:active {
+  			.preview {
+  				font-size: 4rem;
   			}
   		}
   	}

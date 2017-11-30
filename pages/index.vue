@@ -16,6 +16,9 @@
   		Cover,
   		Navbar,
   		Feed
+  	},
+  	created() {
+  		this.$store.dispatch('initPosts')
   	}
   }
 </script>
