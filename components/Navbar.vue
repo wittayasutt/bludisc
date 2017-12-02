@@ -110,7 +110,7 @@
   	}
   }
 
-  @media screen and (max-width: 769px) {
+  @media screen and (max-width: 768px) {
   	.hero {
   		height: 20vh;
 
@@ -129,7 +129,7 @@
   	}
   }
 
-  @media screen and (orientation: landscape) and (max-width: 769px) {
+  @media screen and (orientation: landscape) and (max-width: 768px) {
   	.hero {
   		height: auto;
   	}

@@ -95,7 +95,7 @@
   	}
   }
 
-  @media screen and (max-width: 769px) {
+  @media screen and (max-width: 768px) {
   	.container {
   		height: 80vh;
 
@@ -117,7 +117,7 @@
   	}
   }
 
-  @media screen and (orientation: landscape) and (max-width: 769px) {
+  @media screen and (orientation: landscape) and (max-width: 768px) {
   	.container {
   		height: 100vh;
   	}
