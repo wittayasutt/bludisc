@@ -1,8 +1,11 @@
 <template>
-  <div class="cart-item" :class="{ 'active': selectedID === item.id }">
-    <img :src="item.cover.medium" :alt="item.title" @click="selectPostID(item.id)" />
+  <div class="cart-item" :class="{ 'active': selectedID === item.id, 'minimize' : minimize}">
+    <div class="cart-image">
+      <img :src="item.cover.medium" :alt="item.title" @click="selectPostID(item.id)" />
+      <i class="fa fa-close" aria-hidden="true" @click="removeItem(item.id)"></i>
+    </div>
 
-    <div class="collapse" :class="{ 'no-transition': noTransition === true }">
+    <div class="collapse" :class="{ 'no-transition': noTransition }">
       <div class="description">
         <div class="game">
           <div class="name-and-price">
@@ -90,14 +93,18 @@
   import { mapGetters, mapActions } from 'vuex'
 
   export default {
-  	props: ['item'],
+  	props: ['item', 'minimize'],
   	methods: {
   		...mapActions({
-  			selectID: 'selectID'
+  			selectID: 'selectID',
+  			removeFromCart: 'removeFromCart'
   		}),
   		selectPostID(id) {
   			id = id !== this.selectedID ? id : -1
   			this.selectID(id)
+  		},
+  		removeItem(id) {
+  			this.removeFromCart(id)
   		}
   	},
   	computed: {
@@ -112,6 +119,7 @@
 
 <style lang="scss" scoped>
   $collapse-width: 550px;
+  $minimize-width: 300px;
   $user-width: 150px;
   $more-width: 30px;
   $detail-line-height: 1.8;
@@ -123,17 +131,38 @@
   	flex-direction: row;
   	padding: 0.5rem;
   	padding-left: 0rem;
-  	// transition: 0.4s;
 
-  	img {
+  	.cart-image {
   		height: 100%;
-  		cursor: pointer;
-  	}
+  		position: relative;
+  		width: auto;
+  		transition: 0.4s;
 
-  	// img:hover ~ .collapse {
-  	// 	width: $collapse-width;
-  	// 	border-right: 1px solid $secondary;
-  	// }
+  		img {
+  			height: 100%;
+  			cursor: pointer;
+  			transition: 0.4s;
+  		}
+
+  		img:hover ~ i {
+  			opacity: 0.7;
+  		}
+
+  		i {
+  			position: absolute;
+  			top: 6px;
+  			right: 6px;
+  			font-size: 1.2em;
+  			color: #eeeeee;
+  			opacity: 0;
+  			cursor: pointer;
+  			transition: 0.2s;
+  		}
+
+  		i:hover {
+  			opacity: 0.9;
+  		}
+  	}
 
   	.collapse {
   		height: 100%;
@@ -285,20 +314,70 @@
   	}
 
   	.collapse.no-transition {
-  		// transition: none;
+  		transition: none;
   	}
   }
 
   .cart-item.active {
   	.collapse {
-  		min-width: $collapse-width;
   		width: $collapse-width;
+  		border-right: 1px solid $secondary;
+  	}
+  }
+
+  .cart-item.minimize {
+  	.cart-image {
+  		width: auto;
+  		max-width: 100%;
+
+  		i {
+  			top: 1px;
+  			right: 1px;
+  			font-size: 0.8em;
+  		}
+  	}
+
+  	.collapse {
+  		width: 0;
+
+  		.description {
+  			width: $minimize-width - $more-width;
+
+  			.game {
+  				width: $minimize-width - $more-width;
+  				justify-content: center;
+  				border-right: none;
+
+  				.specs-and-detail {
+  					display: none;
+  				}
+
+  				.button {
+  					display: none;
+  				}
+  			}
+  			.user {
+  				display: none;
+  			}
+  		}
+
+  		.more {
+  			height: 100%;
+  			width: $more-width;
+  		}
+  	}
+  }
+
+  .cart-item.active.minimize {
+  	.collapse {
+  		width: $minimize-width;
   		border-right: 1px solid $secondary;
   	}
   }
 
   @media screen and (max-width: 1407px) {
   	$collapse-width: 450px;
+  	$minimize-width: 250px;
   	$user-width: 110px;
   	$more-width: 30px;
 
@@ -341,6 +420,25 @@
   	.cart-item.active {
   		.collapse {
   			width: $collapse-width;
+  		}
+  	}
+
+  	.cart-item.minimize {
+  		.description {
+  			width: $minimize-width - $more-width;
+  			.game {
+  				width: $minimize-width - $more-width;
+  			}
+  		}
+  		.more {
+  			width: $more-width;
+  		}
+  	}
+
+  	.cart-item.active.minimize {
+  		.collapse {
+  			width: $minimize-width;
+  			border-right: 1px solid $secondary;
   		}
   	}
   }

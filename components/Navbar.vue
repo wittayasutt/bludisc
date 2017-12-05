@@ -1,137 +1,267 @@
 <template>
-  <section class="hero is-dark ">
-    <div class="hero-head">
-      <nav class="navbar is-dark">
-        <div class="container is-fluid">
-        </div>
-      </nav>
+  <div id="navbar" class="navbarContainer">
+    <div class="welcome" :class="{ 'collapse': collapse }">
+      <h1 class="title">" เพราะเราอยากให้คุณเล่นเกมที่ดีในราคาที่คุ้มค่า "</h1>
+      <h2 class="subtitle">คุณต้องการ?</h2>
     </div>
-
-    <div class="hero-body">
+    <div class="navbar">
       <div class="container">
-        <h2 class="subtitle">
-          <strong>" เพราะเราอยากให้คุณเล่นเกมที่ดีในราคาที่คุ้มค่า "</strong>
-        </h2>
-        <h2 class="subtitle">
-          คุณต้องการ?
-        </h2>
+        <div class="left" :class="{ 'collapse': !collapse }">
+          <div class="item">
+            <img src="logo/svg/logo_withtext.svg" alt="bludisc">
+          </div>
+        </div>
+        <div class="center" :class="{ 'collapse': !collapse }"></div>
+
+        <div class="center-right" :class="{ 'collapse': !collapse }">
+          <div class="item" @mouseover="mouseover" @mouseout="mouseout">
+            <div class="trade" :class="{ 'active': active === 'buy' }" @click="toFeed">
+              <i class="fa fa-cart-arrow-down"></i>ซื้อ
+            </div>
+            <span>|</span>
+            <div class="trade" :class="{ 'active': active === 'sell' }" @click="toFeed">
+              <i class="fa fa-cart-plus"></i>ขาย
+            </div>
+          </div>
+        </div>
+        <div class="right" :class="{ 'collapse': !collapse }">
+          <div class="item">
+            รายชื่อเกม
+          </div>
+          <div class="item">
+            เข้าสู่ระบบ
+          </div>
+          <div class="item">
+            สมัครสมาชิก
+          </div>
+        </div>
       </div>
     </div>
-
-    <div class="hero-foot none">
-      <nav class="tabs is-boxed is-fullwidth">
-        <div class="container">
-          <ul>
-            <li class="is-active">
-              <a>Platform</a>
-            </li>
-            <li>
-              <a>Genre</a>
-            </li>
-            <li>
-              <a>Zone</a>
-            </li>
-            <li>
-              <a>Price</a>
-            </li>
-            <li>
-              <a>Quality</a>
-            </li>
-            <li>
-              <a>Status</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </div>
-
-    <nav class="navbar has-shadow none">
-      <div class="container">
-        <div class="navbar-tabs">
-          <a class="navbar-item is-tab is-active">
-            PlayStation 4
-          </a>
-          <a class="navbar-item is-tab">
-            PlayStation 3
-          </a>
-          <a class="navbar-item is-tab">
-            Nintendo Switch
-          </a>
-        </div>
-      </div>
-    </nav>
-
-    <div class="tabs is-centered is-boxed is-medium">
-      <ul>
-        <li class="is-active">
-          <a>
-            <span class="icon is-small">
-              <i class="fa fa-cart-arrow-down"></i>
-            </span>
-            <span>ซื้อ</span>
-          </a>
-        </li>
-        <li>
-          <a>
-            <span class="icon is-small">
-              <i class="fa fa-cart-plus"></i>
-            </span>
-            <span>ขาย</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </section>
+  </div>
 </template>
 
-<style lang="scss" scoped>
-  .none {
-  	display: none;
-  }
+<script>
+  import jump from 'jump.js'
 
-  .hero {
-  	height: 25vh;
-
-  	.hero-head {
-  		// height: 0rem;
-  	}
-
-  	.hero-body {
-  		padding: 1.5rem;
-
-  		.subtitle {
-  			text-align: center;
+  export default {
+  	data() {
+  		return {
+  			active: 'buy'
   		}
-  	}
-
-  	.navbar.has-shadow {
-  		background: #f5f5f5;
-  		color: $dark;
-  	}
-  }
-
-  @media screen and (max-width: 768px) {
-  	.hero {
-  		height: 20vh;
-
-  		.hero-head {
-  			height: 0rem;
-  		}
-
-  		.hero-body {
-  			padding: 0.5rem;
-
-  			.subtitle {
-  				font-size: 1rem;
-  				margin-bottom: auto;
+  	},
+  	props: ['collapse', 'trade'],
+  	methods: {
+  		toFeed() {
+  			if (!this.collapse) {
+  				jump('#navbar', {
+  					duration: 700
+  				})
+  			}
+  		},
+  		mouseover() {
+  			if (this.trade === 'buy') {
+  				this.active = 'sell'
+  			} else if (this.trade === 'sell') {
+  				this.active = 'buy'
+  			}
+  		},
+  		mouseout() {
+  			if (this.trade === 'buy') {
+  				this.active = 'buy'
+  			} else if (this.trade === 'sell') {
+  				this.active = 'sell'
   			}
   		}
   	}
   }
+</script>
 
-  @media screen and (orientation: landscape) and (max-width: 768px) {
-  	.hero {
-  		height: auto;
+<style lang="scss" scoped>
+  $menu-transition: 0.4s;
+
+  .navbarContainer {
+  	position: sticky;
+  	top: 0;
+  	left: 0;
+  	z-index: 10;
+  	box-shadow: 0 0.5px 0.5px 0.5px rgba(0, 0, 0, 0.5);
+
+  	.welcome {
+  		height: calc(25vh - 40px);
+  		background: $dark;
+  		display: flex;
+  		justify-content: center;
+  		align-items: center;
+  		flex-direction: column;
+  		overflow: hidden;
+  		transition: 0.4s;
+
+  		.title {
+  			font-size: 1.5rem;
+  			font-weight: normal;
+  			color: #ffffff;
+  			margin: 2.5%;
+  		}
+
+  		.subtitle {
+  			font-size: 1.2rem;
+  			color: #ffffff;
+  		}
+  	}
+
+  	.welcome.collapse {
+  		height: 0;
+  	}
+
+  	.navbar {
+  		height: 40px;
+  		min-height: 40px;
+  		background: $dark;
+
+  		.container {
+  			min-height: 40px;
+  			display: flex;
+  			justify-content: space-between;
+
+  			.left {
+  				flex: 1;
+  				display: flex;
+  				flex-direction: row;
+  				align-items: center;
+  				transition: $menu-transition;
+
+  				.item {
+  					height: 100%;
+  					display: flex;
+  					align-items: center;
+
+  					img {
+  						height: 50%;
+  						cursor: pointer;
+  					}
+  				}
+  			}
+
+  			.left.collapse {
+  				flex: 0;
+  			}
+
+  			.center {
+  				flex: 4;
+  				transition: $menu-transition;
+  			}
+
+  			.center.collapse {
+  				flex: 3;
+  			}
+
+  			.center-right {
+  				flex: 1;
+  				display: flex;
+  				flex-direction: row;
+  				align-items: center;
+  				transition: $menu-transition;
+
+  				.item {
+  					flex: 1;
+  					height: 100%;
+  					display: flex;
+  					justify-content: center;
+  					align-items: center;
+  					color: rgba(#ffffff, 0.6);
+  					border-bottom: 2px solid transition;
+  					cursor: pointer;
+  					transition: 0.1s;
+
+  					&:hover {
+  						background: rgba($grey, 0.15);
+  					}
+
+  					.trade {
+  						transition: $menu-transition;
+  						i {
+  							display: none;
+  						}
+
+  						&:hover {
+  							color: $accent;
+  						}
+  					}
+
+  					.trade.active {
+  						color: $accent;
+  					}
+
+  					span {
+  						opacity: 1;
+  					}
+  				}
+  			}
+
+  			.center-right.collapse {
+  				.item {
+  					.trade {
+  						flex: 1;
+  						height: 100%;
+  						display: flex;
+  						justify-content: center;
+  						align-items: center;
+  						background: #ffffff;
+  						color: $dark;
+  						border-top-left-radius: 5px;
+  						border-top-right-radius: 5px;
+
+  						&:hover {
+  							background: rgba(#ffffff, 0.8);
+  						}
+
+  						&:active {
+  							background: rgba(#ffffff, 0.8);
+  						}
+
+  						i {
+  							display: inherit;
+  							width: 20px;
+  						}
+  					}
+
+  					span {
+  						opacity: 0;
+  					}
+  				}
+  			}
+
+  			.right {
+  				flex: 3;
+  				display: flex;
+  				flex-direction: row;
+  				align-items: center;
+  				opacity: 1;
+  				transition: $menu-transition;
+
+  				.item {
+  					flex: 1;
+  					height: 100%;
+  					display: flex;
+  					justify-content: center;
+  					align-items: center;
+  					color: rgba(#ffffff, 0.6);
+  					border-bottom: 2px solid transition;
+  					cursor: pointer;
+  					transition: 0.1s;
+
+  					&:hover {
+  						background: rgba($grey, 0.15);
+  						color: rgba(#ffffff, 1);
+  					}
+  				}
+  			}
+
+  			.right.collapse {
+  				visibility: hidden;
+  				opacity: 0;
+  			}
+  		}
   	}
   }
 </style>

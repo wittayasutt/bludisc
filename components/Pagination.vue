@@ -9,25 +9,43 @@
     <li class="main">
       <span>Next</span>
     </li>
+    <li class="minimize" @click="swichSize">
+      <i class="fa" :class="{ 'fa-th': !minimize, 'fa-th-large': minimize }" aria-hidden="true"></i>
+    </li>
   </ul>
 </template>
 
 <script>
-  export default {}
+  import { mapGetters, mapActions } from 'vuex'
+  export default {
+  	methods: {
+  		...mapActions({
+  			switchSizeCart: 'switchSizeCart'
+  		}),
+  		swichSize() {
+  			this.switchSizeCart()
+  		}
+  	},
+  	computed: {
+  		...mapGetters({
+  			minimize: 'getMinimizeCart'
+  		})
+  	}
+  }
 </script>
 
 
 <style lang="scss" scoped>
   ul {
   	position: sticky;
-  	top: 0;
+  	top: 40px;
   	left: 0;
-  	height: 100vh;
+  	height: calc(100vh - 40px);
   	max-height: 100vh;
   	width: 50px;
   	border-right: 1px solid rgba($secondary, 0.3);
   	margin: -$gap auto;
-    float: left;
+  	float: left;
 
   	display: flex;
   	flex-direction: column;
@@ -54,6 +72,12 @@
 
   	li.main {
   		flex: 3;
+  	}
+
+  	li.minimize {
+  		height: 10vh;
+  		max-height: 70px;
+  		border-top: 1px solid rgba($secondary, 0.3);
   	}
   }
 </style>

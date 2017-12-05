@@ -40,6 +40,14 @@
 		url(../fonts/Athiti/Athiti-Bold.ttf) format('truetype');
 }
 
+@font-face {
+	font-family: 'Comfortaa';
+	font-style: normal;
+	font-weight: 700;
+	src: local('Comfortaa'), local('Comfortaa-Regular'),
+		url(../fonts/Comfortaa/Comfortaa-Regular.ttf) format('truetype');
+}
+
 html {
 	box-sizing: border-box;
 }
@@ -49,4 +57,8 @@ html {
 *:after {
 	box-sizing: border-box;
 	margin: 0;
+}
+
+.comfortaa {
+	font-family: 'Comfortaa';
 }

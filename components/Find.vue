@@ -38,9 +38,17 @@
   			searchFocus: false
   		}
   	},
+  	props: ['focus'],
   	methods: {
   		search() {
   			this.$refs.search.focus()
+  		}
+  	},
+  	watch: {
+  		focus: function(val) {
+  			if (val) {
+  				this.$refs.search.focus()
+  			}
   		}
   	}
   }
@@ -93,8 +101,6 @@
   }
 
   .filter {
-  	margin-top: 2px;
-
   	ul {
   		display: flex;
   		flex-direction: row;
@@ -109,6 +115,7 @@
   			height: 40px;
   			background: rgba($secondary, 0.1);
   			color: rgba(#ffffff, 0.6);
+        border-top:1px solid rgba($secondary, 0.2);
   			transition: 0.4s;
   			cursor: pointer;
 
@@ -166,6 +173,6 @@
   	height: 1px;
   	width: 100%;
   	margin: $gap auto;
-  	background: #ffffff;
+  	background: rgba(#ffffff, 0.3);
   }
 </style>

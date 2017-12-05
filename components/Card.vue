@@ -1,19 +1,23 @@
 <template>
   <div class="card" @click="addItem(post)">
     <img :src="post.cover.medium" :alt="post.title" />
-    <div class="name">{{post.title}} ({{post.platform}})</div>
-    <div class="price">{{post.price}} Baht</div>
+    <div class="name-and-price">
+      <div class="name">{{post.title}} ({{post.platform}})</div>
+      <div class="price">{{post.price}} Baht</div>
+    </div>
 
     <div class="overlay">
       <div class="preview">
-        <span class="icon is-large">
-          <i class="fa fa-play"></i>
-        </span>
+        <i class="fa fa-play"></i>
       </div>
-      <div class="text">
-        <div class="name">{{post.title}} ({{post.platform}})</div>
-        <div class="price">{{post.price}} Baht</div>
-        <a class="button is-primary is-outlined is-small btn-more">more details</a>
+      <div class="detail">
+        <div class="text">
+          <div class="name">{{post.title}} ({{post.platform}})</div>
+          <div class="price">{{post.price}} Baht</div>
+        </div>
+        <div class="buttonContain">
+          <a class="button is-info is-outlined is-small btn-more">more details</a>
+        </div>
       </div>
     </div>
   </div>
@@ -45,20 +49,19 @@
   	background-color: inherit;
   	box-shadow: none;
   	cursor: pointer;
-
+  	color: #ffffff;
+  	font-size: 0.7rem;
   	img {
   		width: 100%;
   	}
 
-  	.name {
-  		color: white;
-  		font-size: 0.8rem;
-  	}
+  	.name-and-price {
+  		padding: 0 0.1rem;
 
-  	.price {
-  		color: $primary;
-  		font-size: 0.9rem;
-  		font-weight: 600;
+  		.price {
+  			color: $accent;
+  			font-size: 1.1em;
+  		}
   	}
 
   	.overlay {
@@ -70,52 +73,79 @@
   		height: 100%;
   		width: 100%;
   		opacity: 0;
-  		background-color: rgba($dark, 0.4);
+  		background-color: rgba($dark, 0.2);
+  		// border: 2px solid $accent;
+  		transition: 0.2s ease-out;
+
+  		.preview {
+  			display: flex;
+  			justify-content: center;
+  			align-items: center;
+  			color: #ffffff;
+  			height: 70%;
+  			font-size: 2rem;
+  			opacity: 0.7;
+  			transition: 0.1s;
+  		}
+
+  		.detail {
+  			position: absolute;
+  			bottom: 0;
+  			left: 0;
+  			right: 0;
+  			width: 100%;
+  			display: flex;
+  			flex-direction: column;
+
+  			.text {
+  				height: 0px;
+  				background: $dark;
+  				display: flex;
+  				flex-direction: column;
+  				justify-content: center;
+  				align-items: center;
+  				overflow: hidden;
+  				transition: 0.2s;
+
+  				.name {
+  					text-align: center;
+  				}
+
+  				.price {
+  					font-size: 1.4em;
+  					font-weight: 900;
+  					text-align: center;
+  					color: $accent;
+  				}
+  			}
+
+  			.buttonContain {
+  				height: 40px;
+  				width: 100%;
+  				display: flex;
+  				justify-content: center;
+  				background-color: $dark;
+
+  				.btn-more {
+  					margin: 0 auto;
+  					width: 85%;
+  					transition: 0.2s;
+  				}
+  			}
+  		}
 
   		&:hover {
   			opacity: 1;
-  			border: 3px solid $primary;
-
-  			.preview {
-  				display: flex;
-  				align-items: center;
-  				justify-content: center;
-  				color: #fff;
-  				height: 60%;
-  				font-size: 3rem;
-  				opacity: 0.7;
-  				transition: 0.1s ease;
-  			}
 
   			.text {
-  				position: absolute;
-  				bottom: 0;
-  				left: 0;
-  				right: 0;
-  				width: 100%;
-  				background-color: $dark;
-  				padding: 0.5rem 0.75rem 0.75rem;
-  				box-shadow: 0px -3px 10px -2px $dark;
-
-  				.price {
-  					font-size: 1rem;
-  					font-weight: 900;
-  					text-align: center;
-  					margin: 0.15rem auto 0.3rem;
-  				}
-
-  				.btn-more {
-  					display: block;
-  					margin: auto;
-  					width: 85%;
-  					transition: 0.1s ease;
-  				}
+  				height: 60px;
   			}
   		}
 
   		&:active {
   			.preview {
-  				font-size: 4rem;
+  				// font-size: 2.1rem;
+  				opacity: 0.8;
   			}
   		}
   	}

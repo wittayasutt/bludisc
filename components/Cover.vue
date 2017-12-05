@@ -1,20 +1,44 @@
 <template>
-  <div class="container is-fluid">
+  <div id="cover" class="container is-fluid">
     <div class="overlay">
       <img src="logo/svg/logo_original.svg" alt="bludisc">
-      <h1>WHAT DO YOU WANT TO PLAY?</h1>
+      <h1 class="comfortaa">What do you want to play?</h1>
       <div class="search">
-        <input type="text" placeholder="ex. God of War" autofocus="autofocus">
+        <input class="comfortaa" type="text" placeholder="God of War, Final Fantasy, Resident Evil ..." ref="search" autofocus="autofocus">
       </div>
-      <span class="icon is-large">
-        <i class="fa fa-chevron-down "></i>
-      </span>
+      <div class="down" @click="toFeed">
+        <span class="icon is-large">
+          <i class="fa fa-angle-down "></i>
+        </span>
+      </div>
     </div>
     <video autoplay muted loop>
       <source src="cover.mp4" type='video/mp4'>
     </video>
   </div>
 </template>
+
+<script>
+  import jump from 'jump.js'
+
+  export default {
+  	props: ['focus'],
+  	methods: {
+  		toFeed() {
+  			jump('#navbar', {
+  				duration: 700
+  			})
+  		}
+  	},
+  	watch: {
+  		focus: function(val) {
+  			if (val) {
+  				this.$refs.search.focus()
+  			}
+  		}
+  	}
+  }
+</script>
 
 <style lang="scss" scoped>
   .container {
@@ -48,10 +72,6 @@
   			margin-bottom: 1.5rem;
   		}
 
-  		h1 {
-  			font-weight: bold;
-  		}
-
   		.search {
   			input {
   				background: none;
@@ -68,11 +88,17 @@
   			}
   		}
 
-  		span {
+  		.down {
   			position: absolute;
-  			font-size: 2rem;
-  			bottom: 30px;
-  			animation: MoveUpDown 1.2s linear infinite;
+  			bottom: 0;
+  			height: 10vh;
+  			width: 100%;
+  			cursor: pointer;
+
+  			span {
+  				font-size: 2rem;
+  				animation: MoveUpDown 1.2s linear infinite;
+  			}
   		}
   	}
 
@@ -101,8 +127,8 @@
 
   		.overlay {
   			img {
-          height: 3rem;
-          margin-bottom: 1rem;
+  				height: 3rem;
+  				margin-bottom: 1rem;
   			}
 
   			h1 {
@@ -112,7 +138,7 @@
 
   		video {
   			min-width: 130%;
-  		filter: blur(1px);
+  			filter: blur(1px);
   		}
   	}
   }
@@ -125,14 +151,13 @@
 
   @keyframes MoveUpDown {
   	0% {
-  		bottom: 30px;
-  		opacity: 1;
+  		transform: translateY(0);
   	}
-  	20% {
+  	40% {
   		opacity: 1;
   	}
   	100% {
-  		bottom: 10px;
+  		transform: translateY(50%);
   		opacity: 0;
   	}
   }

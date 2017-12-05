@@ -1,14 +1,14 @@
 <template>
-  <div class="cart" :class="{ 'expand': expand === true }">
-    <div class="scroll" @click="clickLeftArrow">
-    <i class="fa fa-angle-left" aria-hidden="true"></i>
+  <div class="cart" :class="{ 'expand': expand, 'minimize': minimize}">
+    <div class="scroll" :class="{ 'disabled': scrollDisabled }" @click="clickLeftArrow">
+      <i class="fa fa-angle-left" aria-hidden="true"></i>
     </div>
     <div class="cart-items">
-      <cart-item v-for="(item, index) in cart" :item="item" :key="index" />
+      <cart-item v-for="(item, index) in cart" :key="index" :item="item" :minimize="minimize" />
     </div>
     <div class="space"></div>
-    <div class="scroll" @click="clickRightArrow">
-    <i class="fa fa-angle-right" aria-hidden="true"></i>
+    <div class="scroll" :class="{ 'disabled': scrollDisabled }" @click="clickRightArrow">
+      <i class="fa fa-angle-right" aria-hidden="true"></i>
     </div>
   </div>
 </template>
@@ -23,13 +23,9 @@
   	},
   	data() {
   		return {
-  			expand: false
+  			expand: false,
+  			scrollDisabled: true
   		}
-  	},
-  	computed: {
-  		...mapGetters({
-  			cart: 'getCart'
-  		})
   	},
   	methods: {
   		...mapActions({
@@ -37,15 +33,22 @@
   			clickRight: 'clickRight'
   		}),
   		clickLeftArrow() {
-  			this.clickLeft()
+  			if (!this.scrollDisabled) this.clickLeft()
   		},
   		clickRightArrow() {
-  			this.clickRight()
+  			if (!this.scrollDisabled) this.clickRight()
   		}
+  	},
+  	computed: {
+  		...mapGetters({
+  			cart: 'getCart',
+  			minimize: 'getMinimizeCart'
+  		})
   	},
   	watch: {
   		cart: function(val) {
   			this.expand = this.cart.length > 0 ? true : false
+  			this.scrollDisabled = this.cart.length < 2 ? true : false
   		}
   	}
   }
@@ -58,7 +61,7 @@
   .cart {
   	position: fixed;
   	bottom: 0;
-  	height: 25vh;
+  	height: 0;
   	max-height: 180px;
   	width: calc(100% - 50px);
   	margin-left: 50px;
@@ -66,19 +69,19 @@
   	display: flex;
   	justify-content: flex-start;
   	flex-direction: row;
-  	transition: 1s;
+  	transition: 0.5s ease-out;
 
   	.cart-items {
   		display: flex;
   		flex-direction: row;
-  		// height: 25vh;
-  		// max-height: 180px;
-  		// min-width: calc(100% - 50px - ($scroll-width * 2));
-  		// overflow: hidden;
+  		height: 25vh;
+  		max-height: 180px;
+  		min-width: calc(100% - 50px - ($scroll-width * 2));
   	}
 
   	.scroll {
-  		height: 100%;
+  		height: 25vh;
+  		max-height: 180px;
   		min-width: $scroll-width;
   		display: flex;
   		justify-content: center;
@@ -101,6 +104,7 @@
 
   	.scroll.disabled {
   		color: rgba(#ffffff, 0.1);
+  		cursor: default;
 
   		&:hover {
   			color: rgba(#ffffff, 0.1);
@@ -118,5 +122,20 @@
 
   .cart.expand {
   	height: 25vh;
+  }
+
+  .cart.minimize {
+  	height: 10vh;
+  	max-height: 70px;
+
+  	.cart-items {
+  		height: 10vh;
+  		max-height: 70px;
+  	}
+
+  	.scroll {
+  		height: 10vh;
+  		max-height: 70px;
+  	}
   }
 </style>

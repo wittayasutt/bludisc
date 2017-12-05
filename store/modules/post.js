@@ -5,7 +5,8 @@ const state = {
 	posts: [],
 	cart: [],
 	selectedID: -1,
-	noTransition: false
+	noTransition: false,
+	minimizeCart: false
 }
 
 const getters = {
@@ -20,6 +21,9 @@ const getters = {
 	},
 	getNoTransition: state => {
 		return state.noTransition
+	},
+	getMinimizeCart: state => {
+		return state.minimizeCart
 	}
 }
 
@@ -39,6 +43,17 @@ const mutations = {
 	setSelectedID(state, id) {
 		state.noTransition = false
 		state.selectedID = id
+	},
+	removeItem(state, id) {
+		state.noTransition = true
+		let cart = state.cart
+
+		cart = _.remove(cart, item => id !== item.id)
+		state.cart = cart
+
+		if (this.selectedID === id) {
+			this.selectedID = -1
+		}
 	},
 	clickLeftArrow(state) {
 		state.noTransition = true
@@ -61,6 +76,12 @@ const mutations = {
 			cart.push(item)
 			state.cart = cart
 		}
+	},
+	setSizeCart(state) {
+		if (state.cart.length > 0) {
+			let minimizeCart = state.minimizeCart ? false : true
+			state.minimizeCart = minimizeCart
+		}
 	}
 }
 
@@ -74,11 +95,17 @@ const actions = {
 	selectID: ({ commit }, id) => {
 		commit('setSelectedID', id)
 	},
+	removeFromCart: ({ commit }, id) => {
+		commit('removeItem', id)
+	},
 	clickLeft: ({ commit }) => {
 		commit('clickLeftArrow')
 	},
 	clickRight: ({ commit }) => {
 		commit('clickRightArrow')
+	},
+	switchSizeCart: ({ commit }) => {
+		commit('setSizeCart')
 	}
 }
 

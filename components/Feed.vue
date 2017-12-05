@@ -3,7 +3,7 @@
     <pagination/>
 
     <div class="container">
-      <find/>
+      <find :focus="focus" />
       <section class="items">
         <div class="columns is-multiline">
           <div class="column is-3" v-for="(post, index) in posts" :key="index">
@@ -31,6 +31,7 @@
   		Card,
   		Cart
   	},
+  	props: ['focus'],
   	computed: {
   		...mapGetters({
   			posts: 'getPosts'

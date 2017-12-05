@@ -3058,6 +3058,10 @@ jsprim@^1.2.2:
     json-schema "0.2.3"
     verror "1.10.0"
 
+jump.js@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/jump.js/-/jump.js-1.0.2.tgz#e0641b47f40a38f2139c25fda0500bf28e43015a"
+
 kind-of@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-2.0.1.tgz#018ec7a4ce7e3a86cb9141be519d24c8faa981b5"
@@ -5586,10 +5590,6 @@ vue-meta@^1.1.0:
     deepmerge "^1.5.0"
     lodash.isplainobject "^4.0.6"
     object-assign "^4.1.1"
-
-vue-parallaxy@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/vue-parallaxy/-/vue-parallaxy-1.0.4.tgz#e254b7acc84657171dedcb481ddf4f91e07e2380"
 
 vue-router@^2.7.0:
   version "2.7.0"
