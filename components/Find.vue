@@ -134,7 +134,7 @@
   	}
 
   	.filterSelect {
-  		border-top: 2px solid rgba($secondary, 0.6);
+  		border-top: 1px solid rgba($secondary, 0.6);
 
   		ul {
   			display: flex;

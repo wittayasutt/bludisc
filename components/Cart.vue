@@ -1,5 +1,5 @@
 <template>
-  <div class="cart" :class="{ 'expand': expand, 'minimize': minimize}">
+  <div class="cart" :class="{ 'expand': expand, 'minimize': minimize, 'collapse': collapse}">
     <div class="scroll" :class="{ 'disabled': scrollDisabled }" @click="clickLeftArrow">
       <i class="fa fa-angle-left" aria-hidden="true"></i>
     </div>
@@ -27,6 +27,7 @@
   			scrollDisabled: true
   		}
   	},
+  	props: ['collapse'],
   	methods: {
   		...mapActions({
   			clickLeft: 'clickLeft',
@@ -47,8 +48,8 @@
   	},
   	watch: {
   		cart: function(val) {
-  			this.expand = this.cart.length > 0 ? true : false
-  			this.scrollDisabled = this.cart.length < 2 ? true : false
+  			this.expand = val.length > 0 ? true : false
+  			this.scrollDisabled = val.length < 2 ? true : false
   		}
   	}
   }
@@ -124,7 +125,7 @@
   	height: 25vh;
   }
 
-  .cart.minimize {
+  .cart.expand.minimize {
   	height: 10vh;
   	max-height: 70px;
 
@@ -137,5 +138,9 @@
   		height: 10vh;
   		max-height: 70px;
   	}
+  }
+
+  .cart.expand.collapse {
+  	height: 0;
   }
 </style>

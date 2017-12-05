@@ -36,6 +36,12 @@
           </div>
         </div>
       </div>
+
+      <div class="contact">
+        <a href="https://www.facebook.com/bludisc/" target="_blank">
+          <i class="fa fa-facebook contact-fb"></i>
+        </a>
+      </div>
     </div>
   </div>
 </template>
@@ -260,6 +266,29 @@
   			.right.collapse {
   				visibility: hidden;
   				opacity: 0;
+  			}
+  		}
+
+  		.contact {
+  			position: absolute;
+  			right: 0;
+  			height: 40px;
+  			width: 50px;
+
+  			a {
+  				height: 100%;
+  				width: 100%;
+  				display: flex;
+  				justify-content: center;
+  				align-items: center;
+  				color: rgba(#ffffff, 0.3);
+  				transition: 0.1s;
+  				cursor: pointer;
+
+  				&:hover {
+  					background: rgba($grey, 0.15);
+  					color: rgba(#ffffff, 1);
+  				}
   			}
   		}
   	}

@@ -13,7 +13,7 @@
       </section>
     </div>
 
-    <cart/>
+    <cart :collapse="collapse" />
   </div>
 </template>
 
@@ -31,7 +31,7 @@
   		Card,
   		Cart
   	},
-  	props: ['focus'],
+  	props: ['focus', 'collapse'],
   	computed: {
   		...mapGetters({
   			posts: 'getPosts'

@@ -2,7 +2,8 @@
   <div>
     <cover ref="cover" :focus="focusCover" />
     <navbar :collapse="navCollapse" :trade="trade" />
-    <feed :focus="!focusCover" />
+    <feed :focus="!focusCover" :collapse="!navCollapse" />
+    <foot :toNav="toNav" />
   </div>
 </template>
 
@@ -10,18 +11,21 @@
   import Cover from '~/components/Cover.vue'
   import Navbar from '~/components/Navbar.vue'
   import Feed from '~/components/Feed.vue'
+  import Foot from '~/components/Foot.vue'
 
   export default {
   	components: {
   		Cover,
   		Navbar,
-  		Feed
+  		Feed,
+  		Foot
   	},
   	data() {
   		return {
   			trade: 'buy',
   			focusCover: true,
-  			navCollapse: false
+  			navCollapse: false,
+  			toNav: 0
   		}
   	},
   	beforeMount() {
@@ -39,6 +43,8 @@
 
   			this.focusCover = window.scrollY < coverHeight / 2 ? true : false
   			this.navCollapse = window.scrollY > coverHeight / 4 ? true : false
+
+  			this.toNav = window.scrollY - this.$refs.cover.$el.clientHeight
   		}
   	}
   }
