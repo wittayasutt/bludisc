@@ -1,10 +1,13 @@
 import posts from '../../data/posts'
-import { findIndex, remove } from 'lodash'
+import { find, findIndex, remove } from 'lodash'
 
 const state = {
 	posts: [],
-	cart: [],
+	selectedPost: {},
 	selectedID: -1,
+	cart: [],
+	trade: 'buy',
+	navCollapse: false,
 	noTransition: false,
 	minimizeCart: false
 }
@@ -13,11 +16,20 @@ const getters = {
 	getPosts: state => {
 		return state.posts
 	},
-	getCart: state => {
-		return state.cart
+	getSelectedPost: state => {
+		return state.selectedPost
 	},
 	getSelectedID: state => {
 		return state.selectedID
+	},
+	getCart: state => {
+		return state.cart
+	},
+	getTrade: state => {
+		return state.trade
+	},
+	getNavCollapse: state => {
+		return state.navCollapse
 	},
 	getNoTransition: state => {
 		return state.noTransition
@@ -31,24 +43,45 @@ const mutations = {
 	setPosts(state, posts) {
 		state.posts = posts
 	},
-	setCart(state, post) {
-		state.noTransition = false
-		let cart = state.cart
-
-		if (_.findIndex(cart, item => item.id === post.id) !== -1)
-			cart = _.remove(cart, item => item.id !== post.id)
-		cart.unshift(post)
-		state.cart = cart
+	setSeletedPost(state, id) {
+		state.selectedPost = posts[2]
 	},
 	setSelectedID(state, id) {
 		state.noTransition = false
 		state.selectedID = id
 	},
+	setCart(state, post) {
+		state.noTransition = false
+		let cart = state.cart
+
+		if (findIndex(cart, item => item.id === post.id) !== -1)
+			cart = remove(cart, item => item.id !== post.id)
+		cart.unshift(post)
+		state.cart = cart
+	},
+	toggleNavCollapse(state, collapse) {
+		if (collapse) {
+			state.navCollapse = collapse
+		} else {
+			state.navCollapse = state.navCollapse ? false : true
+		}
+	},
+	toggleTrade(state, trade) {
+		if (trade) {
+			state.trade = trade
+		} else {
+			if (state.trade === 'buy') {
+				state.trade = 'sell'
+			} else if (state.trade === 'sell') {
+				state.trade = 'buy'
+			}
+		}
+	},
 	removeItem(state, id) {
 		state.noTransition = true
 		let cart = state.cart
 
-		cart = _.remove(cart, item => id !== item.id)
+		cart = remove(cart, item => id !== item.id)
 		state.cart = cart
 
 		if (this.selectedID === id) {
@@ -89,11 +122,20 @@ const actions = {
 	initPosts: ({ commit }) => {
 		commit('setPosts', posts)
 	},
-	addToCart: ({ commit }, post) => {
-		commit('setCart', post)
+	selectPost: ({ commit }, id) => {
+		commit('setSeletedPost', id)
 	},
 	selectID: ({ commit }, id) => {
 		commit('setSelectedID', id)
+	},
+	addToCart: ({ commit }, post) => {
+		commit('setCart', post)
+	},
+	setNavCollapse: ({ commit }, collapse) => {
+		commit('toggleNavCollapse', collapse)
+	},
+	setTrade: ({ commit }, trade) => {
+		commit('toggleTrade', trade)
 	},
 	removeFromCart: ({ commit }, id) => {
 		commit('removeItem', id)

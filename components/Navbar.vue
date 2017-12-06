@@ -7,19 +7,19 @@
     <div class="navbar">
       <div class="container">
         <div class="left" :class="{ 'collapse': !collapse }">
-          <div class="item">
-            <img src="logo/svg/logo_withtext.svg" alt="bludisc">
-          </div>
+          <nuxt-link to="/" class="item">
+            <img src="/logo/svg/logo_withtext.svg" alt="bludisc">
+          </nuxt-link>
         </div>
         <div class="center" :class="{ 'collapse': !collapse }"></div>
 
         <div class="center-right" :class="{ 'collapse': !collapse }">
-          <div class="item" @mouseover="mouseover" @mouseout="mouseout">
-            <div class="trade" :class="{ 'active': active === 'buy' }" @click="toFeed">
+          <div class="item" @click="toggleTrade" @mouseover="mouseover" @mouseout="mouseout">
+            <div class="trade" :class="{ 'active': trade === 'buy' }" @click="toFeed('buy')">
               <i class="fa fa-cart-arrow-down"></i>ซื้อ
             </div>
             <span>|</span>
-            <div class="trade" :class="{ 'active': active === 'sell' }" @click="toFeed">
+            <div class="trade" :class="{ 'active': trade === 'sell' }" @click="toFeed('sell')">
               <i class="fa fa-cart-plus"></i>ขาย
             </div>
           </div>
@@ -47,6 +47,7 @@
 </template>
 
 <script>
+  import { mapGetters, mapActions } from 'vuex'
   import jump from 'jump.js'
 
   export default {
@@ -55,13 +56,29 @@
   			active: 'buy'
   		}
   	},
-  	props: ['collapse', 'trade'],
+  	props: ['collapse'],
+  	mounted() {
+  		if (this.navCollapse) {
+  			jump('#navbar', {
+  				duration: 700
+  			})
+  		}
+  	},
   	methods: {
-  		toFeed() {
+  		...mapActions({
+  			setTrade: 'setTrade'
+  		}),
+  		toFeed(trade) {
   			if (!this.collapse) {
+  				this.setTrade(trade)
   				jump('#navbar', {
   					duration: 700
   				})
+  			}
+  		},
+  		toggleTrade() {
+  			if (this.collapse) {
+  				this.setTrade()
   			}
   		},
   		mouseover() {
@@ -78,6 +95,12 @@
   				this.active = 'sell'
   			}
   		}
+  	},
+  	computed: {
+  		...mapGetters({
+  			trade: 'getTrade',
+  			navCollapse: 'getNavCollapse'
+  		})
   	}
   }
 </script>
@@ -185,12 +208,9 @@
 
   					.trade {
   						transition: $menu-transition;
+
   						i {
   							display: none;
-  						}
-
-  						&:hover {
-  							color: $accent;
   						}
   					}
 

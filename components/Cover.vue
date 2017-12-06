@@ -1,7 +1,7 @@
 <template>
   <div id="cover" class="container is-fluid">
     <div class="overlay">
-      <img src="logo/svg/logo_original.svg" alt="bludisc">
+      <img src="/logo/svg/logo_original.svg" alt="bludisc">
       <h1 class="comfortaa">What do you want to play?</h1>
       <div class="search">
         <input class="comfortaa" type="text" placeholder="God of War, Final Fantasy, Resident Evil ..." ref="search" autofocus="autofocus">

@@ -3,7 +3,7 @@
     <img :src="post.cover.medium" :alt="post.title" />
     <div class="name-and-price">
       <div class="name">{{post.title}} ({{post.platform}})</div>
-      <div class="price">{{post.price}} Baht</div>
+      <div class="price">{{post.price}} บาท</div>
     </div>
 
     <div class="overlay">
@@ -13,10 +13,12 @@
       <div class="detail">
         <div class="text">
           <div class="name">{{post.title}} ({{post.platform}})</div>
-          <div class="price">{{post.price}} Baht</div>
+          <div class="price">{{post.price}} บาท</div>
         </div>
         <div class="buttonContain">
-          <a class="button is-info is-outlined is-small btn-more">more details</a>
+          <nuxt-link :to="'/post/' + post.id" class="button is-info is-outlined is-small btn-more">
+            more details
+          </nuxt-link>
         </div>
       </div>
     </div>

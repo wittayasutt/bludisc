@@ -1,13 +1,14 @@
 <template>
   <div>
     <cover ref="cover" :focus="focusCover" />
-    <navbar :collapse="navCollapse" :trade="trade" />
-    <feed :focus="!focusCover" :collapse="!navCollapse" />
+    <navbar :collapse="collapse" />
+    <feed :focus="!focusCover" :collapse="!collapse" />
     <foot :toNav="toNav" />
   </div>
 </template>
 
 <script>
+  import { mapGetters, mapActions } from 'vuex'
   import Cover from '~/components/Cover.vue'
   import Navbar from '~/components/Navbar.vue'
   import Feed from '~/components/Feed.vue'
@@ -22,13 +23,13 @@
   	},
   	data() {
   		return {
-  			trade: 'buy',
   			focusCover: true,
-  			navCollapse: false,
+  			collapse: false,
   			toNav: 0
   		}
   	},
   	beforeMount() {
+  		this.collapse = this.navCollapse
   		window.addEventListener('scroll', this.handleScroll)
   	},
   	created() {
@@ -38,14 +39,23 @@
   		window.removeEventListener('scroll', this.handleScroll)
   	},
   	methods: {
+  		...mapActions({
+  			setNavCollapse: 'setNavCollapse'
+  		}),
   		handleScroll() {
   			const coverHeight = this.$refs.cover.$el.clientHeight
 
   			this.focusCover = window.scrollY < coverHeight / 2 ? true : false
-  			this.navCollapse = window.scrollY > coverHeight / 4 ? true : false
+  			this.collapse = window.scrollY > coverHeight / 4 ? true : false
+  			this.setNavCollapse(this.collapse)
 
   			this.toNav = window.scrollY - this.$refs.cover.$el.clientHeight
   		}
+  	},
+  	computed: {
+  		...mapGetters({
+  			navCollapse: 'getNavCollapse'
+  		})
   	}
   }
 </script>

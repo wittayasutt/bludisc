@@ -14,3 +14,10 @@ $info: $accent;
 $success: $green;
 $warning: $yellow;
 $danger: $red;
+
+$secondary-background: linear-gradient(
+	to right,
+	darken($secondary, 17%),
+	darken($secondary, 13%),
+	darken($secondary, 17%)
+);

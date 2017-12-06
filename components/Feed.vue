@@ -43,18 +43,13 @@
 
 <style lang="scss" scoped>
   .feed {
-  	background: linear-gradient(
-  		to right,
-  		darken($secondary, 17%),
-  		darken($secondary, 13%),
-  		darken($secondary, 17%)
-  	);
+  	background: $secondary-background;
   	min-height: 100vh;
   	padding-top: $gap;
   	padding-bottom: $gap;
 
   	.container {
-  		background: rgba($dark, 0.6);
+  		background: rgba($dark, 0.4);
   		padding: $gap;
   	}
   }

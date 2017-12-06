@@ -41,12 +41,7 @@
 
 <style lang="scss" scoped>
   .footer {
-  	background: linear-gradient(
-  		to right,
-  		darken($secondary, 17%),
-  		darken($secondary, 13%),
-  		darken($secondary, 17%)
-  	);
+  	background: $secondary-background;
   	height: 0;
   	max-height: 180px;
   	padding: 0;

@@ -10,7 +10,7 @@
         <div class="game">
           <div class="name-and-price">
             <div class="name">{{item.title}}</div>
-            <div class="price">{{item.price}} THB - {{item.status}}</div>
+            <div class="price">{{item.price}} บาท - {{item.status}}</div>
           </div>
 
           <div class="specs-and-detail">
@@ -22,7 +22,7 @@
                 </div>
                 <div class="quality">
                   Quality :
-                  <strong>{{item.quality}}% = Good</strong>
+                  <strong>{{item.quality}}% - Good</strong>
                 </div>
               </div>
               <div class="center">
@@ -42,7 +42,7 @@
                 </div>
               </div>
             </div>
-            <div class="detail">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam nemo officia dolores animi sed quaerat</div>
+            <div class="detail">{{item.detail}}</div>
           </div>
           <a class="button is-info is-outlined">Buy</a>
         </div>
@@ -82,9 +82,9 @@
         </div>
       </div>
 
-      <div class="more">
+      <nuxt-link :to="'/post/' + item.id" class="more">
         <i class="fa fa-angle-right" aria-hidden="true"></i>
-      </div>
+      </nuxt-link>
     </div>
   </div>
 </template>
